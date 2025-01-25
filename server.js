@@ -1,16 +1,20 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
-import express from 'express';
-import Stripe from 'stripe';
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const express = require('express');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 
 app.use(express.static('public'));
 
-app.post('/create-checkout-session', async (_req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
+    discounts: req.headers.referer.endsWith('?discount=true') ? [
+      {
+        coupon: '1a8WDUeP',
+      },
+    ] : [],
     line_items: [
       {
         price: 'price_1QlI46JdgZWAkXVl3kdSQPda',
@@ -38,3 +42,5 @@ app.get('/session-status', async (req, res) => {
 app.listen(3000, () => {
   console.log('Server is listening. Navigate to site at http://localhost:3000/checkout.html');
 });
+
+module.exports = app;
