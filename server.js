@@ -18,6 +18,7 @@ app.post('/create-checkout-session', async (_req, res) => {
       },
     ],
     mode: 'payment',
+    payment_method_types: ['card'],
     return_url: `http://localhost:3000/return.html?session_id={CHECKOUT_SESSION_ID}`,
     ui_mode: 'embedded',
   });
@@ -35,5 +36,5 @@ app.get('/session-status', async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server is listening');
+  console.log('Server is listening. Navigate to site at http://localhost:3000/checkout.html');
 });
