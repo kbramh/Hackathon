@@ -1,0 +1,27 @@
+{
+  "name": "hackathon",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbramh/Hackathon.git"
+  },
+  "author": "kbramh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbramh/Hackathon/issues"
+  },
+  "homepage": "https://github.com/kbramh/Hackathon#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.9"
+  },
+  "type": "module"
+}
