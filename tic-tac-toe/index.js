@@ -84,4 +84,16 @@ const onClick = (mouseClickData) => {
   }
 };
 
+function resetBoard() {
+  const table = document.querySelectorAll('td');
+
+  table.forEach((item, index) => {
+    item.innerHTML = '';
+  });
+}
+
+const resetClick = document.getElementById('reset');
+
+resetClick.addEventListener('click', resetBoard);
+
 window.addEventListener('click', onClick);
