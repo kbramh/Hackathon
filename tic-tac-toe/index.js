@@ -27,7 +27,10 @@ const onClick = (mouseClickData) => {
     document.getElementById('8').textContent != '' &&
     document.getElementById('9').textContent != ''
   ) {
-    setTimeout(() => alert('You got a draw'), 0);
+    setTimeout(function () {
+      resetBoard();
+      alert('You got a draw!');
+    }, 0);
   }
 
   if (
@@ -80,7 +83,10 @@ const onClick = (mouseClickData) => {
       document.getElementById('5').textContent == 'O' &&
       document.getElementById('7').textContent == 'O')
   ) {
-    setTimeout(() => alert('You won!'), 100);
+    setTimeout(function () {
+      resetBoard();
+      alert('You won!');
+    }, 100);
   }
 };
 
@@ -91,9 +97,5 @@ function resetBoard() {
     item.innerHTML = '';
   });
 }
-
-const resetClick = document.getElementById('reset');
-
-resetClick.addEventListener('click', resetBoard);
 
 window.addEventListener('click', onClick);
