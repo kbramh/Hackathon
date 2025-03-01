@@ -17,20 +17,6 @@ const onClick = (mouseClickData) => {
   counter++;
 
   if (
-    document.getElementById('1').textContent != '' &&
-    document.getElementById('2').textContent != '' &&
-    document.getElementById('3').textContent != '' &&
-    document.getElementById('4').textContent != '' &&
-    document.getElementById('5').textContent != '' &&
-    document.getElementById('6').textContent != '' &&
-    document.getElementById('7').textContent != '' &&
-    document.getElementById('8').textContent != '' &&
-    document.getElementById('9').textContent != ''
-  ) {
-    setTimeout(() => alert('You got a draw'), 0);
-  }
-
-  if (
     (document.getElementById('1').textContent == 'X' &&
       document.getElementById('2').textContent == 'X' &&
       document.getElementById('3').textContent == 'X') ||
@@ -80,8 +66,35 @@ const onClick = (mouseClickData) => {
       document.getElementById('5').textContent == 'O' &&
       document.getElementById('7').textContent == 'O')
   ) {
-    setTimeout(() => alert('You won!'), 100);
+    setTimeout(function () {
+      alert('You won!');
+      resetGame();
+    }, 100);
+  } else if (
+    document.getElementById('1').textContent != '' &&
+    document.getElementById('2').textContent != '' &&
+    document.getElementById('3').textContent != '' &&
+    document.getElementById('4').textContent != '' &&
+    document.getElementById('5').textContent != '' &&
+    document.getElementById('6').textContent != '' &&
+    document.getElementById('7').textContent != '' &&
+    document.getElementById('8').textContent != '' &&
+    document.getElementById('9').textContent != ''
+  ) {
+    setTimeout(function () {
+      alert('You got a draw!');
+      resetGame();
+    }, 0);
   }
 };
+
+function resetGame() {
+  const table = document.querySelectorAll('td');
+
+  table.forEach((item, index) => {
+    item.innerHTML = '';
+  });
+  counter = 0;
+}
 
 window.addEventListener('click', onClick);
